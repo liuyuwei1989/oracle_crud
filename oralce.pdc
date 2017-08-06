@@ -1,0 +1,18 @@
+create table employee(id number(9,) primary,sex varchar2(10),birth date,departId number(9,0));
+
+create table depart(id number(9,0) primary key,name varchar2(10),count number(9,0));
+
+alter table employee add constraints user_depart_id foreign key(id) references depart(id);
+
+insert into depart(id,name,count) values(1,'生产部',20);
+
+insert into depart(id,name,count) values(2,'经营部',30);
+
+insert into depart(id,name,count) values(3,'科技部',40);
+
+insert into employee(id,sex,birth,name,departid) values(1,'男',to_date('1989-02-01','yyyy-mm-dd'),'王宝强',1);
+
+insert into employee(id,sex,birth,name,departid) values(2,'女',to_date('1979-04-01','yyyy-mm-dd'),'赵萌萌',2);
+
+insert into employee(id,sex,birth,name,departid) values(3,'男',to_date('1991-05-21','yyyy-mm-dd'),'李强',3);
+
