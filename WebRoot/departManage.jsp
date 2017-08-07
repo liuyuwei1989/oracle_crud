@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td align="center" valign="middle"><div class="btn-group">
 					<a href="" class="btn btn-info">修改部门信息</a>
 					<a href="" class="btn btn-danger">更改部门人员</a>
-					<a href="" class="btn btn-warning">解散部门</a>
+					<a href="Depart_deleteDepart?id=<s:property value="#depart.id" /> " class="btn btn-warning">解散部门</a>
 				</div></td>
 			</tr>
 			</s:iterator>

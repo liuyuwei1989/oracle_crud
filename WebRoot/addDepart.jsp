@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div class="container">
 		<div class="col-xs-6 col-xs-offset-3">
-			<form role="form" method="post" action="User_insert">
+			<form role="form" method="post" action="Depart_addDepart">
 				<div class="form-group">
 					<label>部门名称：</label>
 					<s:textfield cssClass="form-control" theme="simple"

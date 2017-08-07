@@ -24,4 +24,14 @@ public class DepartBiz implements IDepartBiz {
 	public Depart queryById(Integer id) {
 		return this.departDAO.queryById(id);
 	}
+
+	@Override
+	public void insert(Depart depart) {
+		departDAO.insert(depart);
+	}
+
+	@Override
+	public void deleteDepart(Integer id) {
+		departDAO.deleteById(id);
+	}
 }

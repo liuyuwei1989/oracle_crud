@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
 	<bean id="empDAO" class="com.lyw.dao.impl.EmployeeDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -26,17 +28,10 @@
 		<property name="employeeBiz" ref="empBiz"></property>
 	</bean>
 	
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName"
-			value="oracle.jdbc.OracleDriver">
-		</property>
-		<property name="url"
-			value="jdbc:oracle:thin:lacolhost:1521:orcl">
-		</property>
-		<property name="username" value="scott"></property>
-		<property name="password" value="111"></property>
+	<bean name="departAction" class="com.lyw.action.DepartAction">
+		<property name="departBiz" ref="departBiz"></property>
 	</bean>
+	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
@@ -58,4 +53,34 @@
 	</bean>
 	
 	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver">
+		</property>
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:ORCL">
+		</property>
+		<property name="username" value="scott"></property>
+		<property name="password" value="111"></property>
+	</bean>
+	<!-- 声明事务 -->
+	<bean id="transManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 组装 -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* biz.impl.*.*(..))" />
+	</aop:config>
 	</beans>

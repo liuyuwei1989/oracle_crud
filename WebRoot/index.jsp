@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						href:'addDepart.jsp'
 					},{
 						text:'部门管理',
-						href:'Depart_departManage'
+						href:'Departs_showAll'
 					}
 				]
 			}
@@ -81,9 +81,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.getElementById("mainframe").src=data.href;
 			}
 		})
-		
 	})
-	
-	
   </script>
 </html>

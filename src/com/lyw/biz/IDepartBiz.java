@@ -11,4 +11,8 @@ public interface IDepartBiz {
 
 	Depart queryById(Integer id);
 
+	void insert(Depart depart);
+
+	void deleteDepart(Integer id);
+
 }

@@ -14,10 +14,22 @@
 			<result name="addEmp">addUser.jsp</result>
 			<result name="insert">success.jsp</result>
 			<result name="findEmp">modifyUser.jsp</result>
-			<result name="update">/success.jsp</result>
+			<result name="update">success.jsp</result>
+			<result name="delete">success.jsp</result>
 		</action>
+		
 		<action name="Emps_*" class="empAction" method="{1}">
 			<result name="showAll">userManage.jsp</result>
+		</action>
+		
+		<action name="Depart_*" class="departAction" method="{1}">
+			<result name="showAll">showAllDepart.jsp</result>
+			<result name="add">success.jsp</result>
+			<result name="delete">success.jsp</result>
+		</action>
+		
+		<action name="Departs_*" class="departAction" method="{1}">
+			<result name="showAll">departManage.jsp</result>
 		</action>
 	</package>
 </struts>    

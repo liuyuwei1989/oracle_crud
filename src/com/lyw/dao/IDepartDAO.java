@@ -11,4 +11,8 @@ public interface IDepartDAO {
 
 	Depart queryById(Integer id);
 
+	void insert(Depart depart);
+
+	void deleteById(Integer id);
+
 }

@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td align="center" valign="middle"><s:property value="#user.depart.name"/></td>
 				<td align="center" valign="middle"><div class="btn-group">
 					<a href="Emp_findEmp?id=<s:property value="#user.id"/>" class="btn btn-info">修改</a>
-					<a href="Emp_deleteEmp?userId=<s:property value="#user.id"/>" class="btn btn-warning">删除</a>
+					<a href="Emp_deleteEmp?id=<s:property value="#user.id"/>" class="btn btn-warning">删除</a>
 				</div></td>
 			</tr>
 			</s:iterator>

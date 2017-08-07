@@ -19,5 +19,15 @@ public class DepartDAO extends HibernateDaoSupport implements IDepartDAO {
 	public Depart queryById(Integer id) {
 		return (Depart)this.getHibernateTemplate().get(Depart.class, id);
 	}
+
+	@Override
+	public void insert(Depart depart) {
+		this.getHibernateTemplate().save(depart);
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		this.getHibernateTemplate().delete(this.queryById(id));
+	}
 	
 }

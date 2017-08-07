@@ -2,7 +2,7 @@ create table employee(id number(9,) primary,sex varchar2(10),birth date,departId
 
 create table depart(id number(9,0) primary key,name varchar2(10),count number(9,0));
 
-alter table employee add constraints user_depart_id foreign key(departid) references depart(id);
+alter table employee add constraints user_depart_id foreign key(id) references depart(id);
 
 insert into depart(id,name,count) values(1,'Éú²ú²¿',20);
 
